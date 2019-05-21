@@ -1,1 +1,0 @@
-SELECT CONCAT ('drop table ', table_name, ';') FROM information_schema.TABLES WHERE table_schema = 'u934388326_intra' 

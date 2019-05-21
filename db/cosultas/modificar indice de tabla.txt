@@ -1,2 +1,0 @@
-SET @num:= 0;
-UPDATE perfiles SET id_perfil = @num := (@num+1);
