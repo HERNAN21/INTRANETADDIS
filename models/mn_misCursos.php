@@ -173,7 +173,7 @@ class MisCursosModel
         $query .= " inner join persona as per on ev.id_persona=per.id_persona ";
         $query .= " inner join usuarios as us on per.id_persona=us.id_persona ";
         $query .= " where us.id_usuario=".$idUser;
-        $query .= " group by ci.descor,cur.credito ";
+        $query .= " group by ci.descor,cur.credito,cur.id_curso ";
         $query .= " ) as notas_final group by ciclo " ;
         $stmt = Conexion::conectaDB()->prepare($query);
         $stmt->execute();
@@ -198,7 +198,7 @@ class MisCursosModel
         $query .= " inner join usuarios as us on per.id_persona=us.id_persona ";
         $query .= " where us.id_usuario=".$codUser;
         $query .= " and ci.id_ciclo = ".$ciclo;
-        $query .= " group by ci.descor,cur.credito ";
+        $query .= " group by ci.descor,cur.credito,cur.id_curso ";
         $stmt = Conexion::conectaDB()->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

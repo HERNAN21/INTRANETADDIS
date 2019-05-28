@@ -2,8 +2,8 @@ var path="http://localhost/INTRANETADDIS/controllers/";
 
 var alumno=$('#idUser').val();
 $.ajax({
-	// url: 'controllers/mn_misCursos.php?action=cabecera',
-	url: path+'mn_misCursos.php?action=cabecera',
+	url: 'controllers/mn_misCursos.php?action=cabecera',
+	// url: path+'mn_misCursos.php?action=cabecera',
 	type: 'POST',
 	dataType: 'JSON',
 	data: {validar: true,alumno:alumno},
@@ -25,7 +25,7 @@ $.ajax({
 					               '<label>codigo:</label>'+
 					  '</div>'+
 					  '<div class="col-lg-3">'+
-					      '<p> '+lis.cod_unicoMatricula+'</p>'+
+					      '<p id="codigo"> '+lis.cod_unicoMatricula+'</p>'+
 					  '</div>'+
 					'</div>'+
 					'<div class="row clearfix" style="margin-bottom: -30px;">'+
@@ -33,7 +33,7 @@ $.ajax({
 					          '<label>Programa:</label>'+
 					  '</div>'+
 					  '<div class="col-lg-5 ">'+
-					          '<p> &nbsp; &nbsp;'+lis.deslar+'</p>'+
+					          '<p id="carrera"> &nbsp; &nbsp;'+lis.deslar+'</p>'+
 					  '</div>'+
 					  '<div class="col-lg-3">'+
 					               '<label for="nomApell">Resumen de Créditos:</label>'+
@@ -42,8 +42,8 @@ $.ajax({
 					      '<p>Aprobado 120</p>'+
 					  '</div>'+
 					  '<div class="col-lg-7 col-lg-offset-5">'+
-					      '<p class="col-lg-8" style="font-size: 16px; color: green; margin-right: -30px;">Descarga tu record de notas</p>'+
-					      '<button class="btn btn-success col-lg-4"><i class="material-icons">get_app</i> &nbsp; &nbsp;Descargar</button>'+
+					      /*'<p class="col-lg-8" style="font-size: 16px; color: green; margin-right: -30px;">Descarga tu record de notas</p>'+
+					      '<button class="btn btn-success col-lg-4"><i class="material-icons">get_app</i> &nbsp; &nbsp;Descargar</button>'+*/
 					  '</div>'+
 					'</div>';
 				cabecera.append(a);
@@ -127,13 +127,19 @@ function verdetalle(obj) {
 
 
 function verPdf(obj) {
-	var url="controllers/reportes/boletanotas.php?action=verPdf";
+	var ciclo=$(obj).parent().parent().find('input:hidden').eq(0).val();
+	var carrera=$('#carrera').text();
+	var codigo=$('#codigo').text();
+	var url="controllers/reportes/boletanotas.php?action=verPdf&ciclo="+ciclo+"&usuario="+alumno+"&carrera="+carrera+"&codigo="+codigo+"&actionpdf=ver";
 	window.open(url);
 
 }
 
 function descargarPdf(obj) {
-	var url="controllers/reportes/boletanotas.php?action=descargar";
+	var ciclo=$(obj).parent().parent().find('input:hidden').eq(0).val();
+	var carrera=$('#carrera').text();
+	var codigo=$('#codigo').text();
+	var url="controllers/reportes/boletanotas.php?action=verPdf&ciclo="+ciclo+"&usuario="+alumno+"&carrera="+carrera+"&codigo="+codigo+"&actionpdf=des";
 	window.open(url);
 }
 
