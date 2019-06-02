@@ -15,6 +15,7 @@
 
     <!-- Bootstrap Core Css -->
     <link href="views/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    
 
     <link rel="stylesheet" href="views/plugins/alertify/css/alertify.css">
 
@@ -133,6 +134,7 @@
     <script src="views/js/gestorMiPerfil.js"></script>
     <script src="views/js/ma_perfilAlumno.js"></script>
     <script src="views/js/myRecordNotas.js"></script>
+    <script src="views/js/reporteMatricula.js"></script>
 </body>
 
 </html>

@@ -157,7 +157,7 @@ class MisCursosModel
 
     }
 
-    function listSummaryNotas($tabla,$idUser){
+    public function listSummaryNotas($tabla,$idUser){
         $query  = " select id_alumno,id_ciclo, ciclo, ciclo_des , sum(credito) as credito, ROUND(sum(promedio)/count(credito),2) as promedio  ";
         $query .= " from (select distinct CONCAT(per.ape_paterno,' ', per.ape_materno,', ',per.nombres ) as nombres, ";
         $query .= " alum.id_alumno, ci.id_ciclo, ci.deslar as ciclo_des,ci.descor as ciclo, cur.deslar as curso, cur.credito,";
