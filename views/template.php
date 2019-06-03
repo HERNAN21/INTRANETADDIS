@@ -65,6 +65,7 @@
 
     <!-- Jquery Core Js -->
     <script src="views/plugins/jquery/jquery.min.js"></script>
+    
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 
     <script type="text/javascript" src="views/plugins/alertify/alertify.js"></script>
@@ -135,6 +136,7 @@
     <script src="views/js/ma_perfilAlumno.js"></script>
     <script src="views/js/myRecordNotas.js"></script>
     <script src="views/js/reporteMatricula.js"></script>
+
 </body>
 
 </html>

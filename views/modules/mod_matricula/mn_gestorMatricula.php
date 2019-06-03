@@ -28,6 +28,20 @@
     
 ?>
 
+<style type="text/css">
+	.inputstl { 
+    padding: 9px; 
+    border: solid 1px #0077B0; 
+    outline: 0; 
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #C6ECFF), to(#FFFFFF)); 
+    background: -moz-linear-gradient(top, #FFFFFF, #C6ECFF 1px, #FFFFFF 25px); 
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+
+    } 
+</style>
+
 <!-- START CUERPO  -->
 <section class="content">
 	<div class="container">
@@ -83,7 +97,7 @@
 											<div class="col-md-6">
 												<label>Carrerra:</label>
 												<!-- <input type="text" class="form-control-sm form-control"> -->
-												<select name="carrera" id="carrera" class="form-control">
+												<select name="carrera" id="carrera" class="form-control inputstl">
 												</select>
 											</div>
 											<div class="col-md-3">
