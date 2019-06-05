@@ -9,9 +9,46 @@ class Model_Matricula{
 		
 	}
 
+	public function getMatriculaPersona($id_persona){
+		$query  = ' select mat.*, per.* , ';
+		$query .= ' car.id_carrera,car.deslar as carrera_des,car.descor as carrera_descor, ';
+		$query .= ' ci.id_ciclo,ci.deslar as des_ciclo,ci.descor as ciclo_descor, ';
+		$query .= ' sem.id_semestre,sem.descor sem_descor,sem.deslar as sem_deslar ';
+		$query .= ' from matricula as mat  ';
+		$query .= ' inner join evaluacionpostulante as eva on eva.id_evaluacionPost=mat.id_evaluacionPost ';
+		$query .= ' inner join persona as per on eva.id_persona=per.id_persona ';
+		$query .= ' inner join carreras as car on mat.id_carrera=car.id_carrera ';
+		$query .= ' inner join ciclo as ci on ci.id_ciclo=mat.id_ciclo ';
+		$query .= ' inner join semestre as sem on mat.id_semestre=sem.id_semestre ';
+		$query .= ' where per.id_persona=? ';
+		$result = Conexion::conectaDB()->prepare($query);
+		$result->bindParam(1, $id_persona, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+        $result->close();
+	}
 
-	public function insert(){
-			
+
+	public function insert($cod_matricula,$idEvaluacion,$carrera,$ciclo,$semestre,$cod_pago,$tipomat,$cod_user,$id_talalumno){
+		$query  = ' insert into matricula (cod_unicoMatricula, id_evaluacionPost, id_carrera, id_ciclo, id_semestre, ';
+		$query .= ' cod_pago, fecha_registro, cod_usuario, id_talumno) ';
+		$query .= ' values(?, ?, ?, ?, ?, ?, now(), ?, ?) ';
+		$result = Conexion::conectaDB()->prepare($query);
+		$result->bindParam(1, $cod_matricula, PDO::PARAM_STR);
+		$result->bindParam(2, $idEvaluacion, PDO::PARAM_INT);
+		$result->bindParam(3, $carrera, PDO::PARAM_INT);
+		$result->bindParam(4, $ciclo, PDO::PARAM_INT);
+		$result->bindParam(5, $semestre, PDO::PARAM_INT);
+		$result->bindParam(6, $cod_pago, PDO::PARAM_STR);
+		$result->bindParam(7, $cod_user, PDO::PARAM_INT);
+		$result->bindParam(8, $id_talalumno, PDO::PARAM_INT);
+		if ($result->execute()){
+			return "success";
+		}else{
+			// return "error";
+			return $result->errorInfo();
+		}
+		$result->close();
 	}	
 
 	public function update(){

@@ -34,7 +34,7 @@ class EnlacesModel
 
             $module =  "views/modules/mod_pagos/".$enlacesModel.".php";
 
-        }else if($enlacesModel=='mn_gestorMatricula'){
+        }else if($enlacesModel=='mm_gestorMatricula'){
             $module =  "views/modules/mod_matricula/".$enlacesModel.".php";        
         }elseif ( $enlacesModel == "index"){
 

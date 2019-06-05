@@ -65,23 +65,23 @@
                                     <i class="material-icons">add_box</i> Registra Matricula
                                     </a>
                                 </li>
-	                            <li role="presentation">
+	                            <!-- <li role="presentation">
 	                                <a href="#profile_with_icon_title" data-toggle="tab">
 	                                    <i class="material-icons">assignment_return</i> Asignación perfiles a usuarios
 	                                </a>
-	                            </li>
+	                            </li> -->
                             </ul>
 							<div class="row">
 								<div class="col-md-12">
-									<form  id="">
+									
 										<div class="row">
 											<div class="col-md-3">
 												<label>Codigo Matricula:</label>
-												<input type="text" class="form-control form-control-sm disabled" name="cod_alumno" id="cod_alumno">
+												<input type="text" class="form-control form-control-sm" name="cod_matricula" id="cod_matricula">
 											</div>
 											<div class="col-md-8">
 												<label>Nombres y Apellidos:</label>
-												<input type="hidden" name="idEvaluacion" id="idEvaluacion">
+												
 											    <input type="text" id="nombres" name="nombre" class="form-control form-control-sm" disabled>
 											</div>
 											<div class="col-md-1" style="margin-left: -20px;">
@@ -89,10 +89,14 @@
 											    <button class="btn btn-sm btn-success" id="btnModalAlumno"><i class="material-icons">add_box</i></button>
 											</div>
 										</div>
+										<form  id="idFormMatricula">
+
 										<div class="row">
 											<div class="col-md-3">
+												<input type="hidden" name="idEvaluacion" id="idEvaluacion">
+												<input type="hidden" name="id_persona" id="id_persona">
 												<label>Cod Pago:</label>
-												<input type="text" class="form-control-sm form-control">
+												<input type="text" class="form-control-sm form-control" id="cod_pago" name="cod_pago">
 											</div>
 											<div class="col-md-6">
 												<label>Carrerra:</label>
@@ -102,18 +106,20 @@
 											</div>
 											<div class="col-md-3">
 												<label>Ciclo:</label>
-												<input type="text" class="form-control-sm form-control">
+												<select name="ciclo" id="ciclo" class="form-control form-control-sm">
+													
+												</select>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-6">
 												<label>Semestre:</label>
-												<select name="semestre" id="semestre">
+												<select name="semestre" id="semestre" class="form-control form-control-sm">
 												</select>
 											</div>
 											<div class="col-md-5">
 												<label>Tipo Matricula:</label>
-												<select name="tipomat" id="tipomat">
+												<select name="tipomat" id="tipomat" class="form-control form-control-sm">
 													<option value="0">Matricula Inicial</option>
 													<option value="0">Renovacion Matricula</option>
 												</select>
@@ -122,9 +128,9 @@
 									</form>
 										<div class="row">
 											<div class="col-md-12">
-												<button class="btn btn-success">Guardar</button>
+												<button class="btn btn-success" id="btnSave">Guardar</button>
 												<button class="btn btn-info">Actualizar</button>
-												<button class="btn btn-danger">Eliminar</button>
+												
 											</div>
 										</div>
 								</div>
@@ -134,33 +140,21 @@
 									<span class="text-info">HISTORIAL MATRICULA</span>
 								</div>
 								<div class="col-md-12">
-									<table class="table table-hover">
+									<table class="table table-hover" id="listMatPer">
 									  <thead>
 									    <tr>
-									      <th scope="col">#</th>
-									      <th scope="col">First</th>
-									      <th scope="col">Last</th>
-									      <th scope="col">Handle</th>
+									      <th style="width: 5%;" scope="col">#</th>
+									      <th style="width: 5%;" scope="col">Codig Mat</th>
+									      <th style="width: 5%;" scope="col">Dni</th>
+									      <th style="width: 10%;" scope="col">Carrera</th>
+									      <th style="width: 2%;" scope="col">Ciclo</th>
+									      <th style="width: 3%;" scope="col">Semestre</th>
+									      <th style="width: 10%;" scope="col">Accion</th>
 									    </tr>
 									  </thead>
 									  <tbody>
-									    <tr>
-									      <th scope="row">1</th>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td>@mdo</td>
-									    </tr>
-									    <tr>
-									      <th scope="row">2</th>
-									      <td>Jacob</td>
-									      <td>Thornton</td>
-									      <td>@fat</td>
-									    </tr>
-									    <tr>
-									      <th scope="row">3</th>
-									      <td colspan="2">Larry the Bird</td>
-									      <td>@twitter</td>
-									    </tr>
+									    <!-- <i class="material-icons">list_alt</i> -->
+									    
 									  </tbody>
 									</table>
 								</div>
@@ -189,11 +183,13 @@
       </div>
       <div class="modal-body">
       	<div class="row">
-      		<div class="col-md-6">
-      			<input type="text" id="dniBus">
+      		<div class="col-md-3">
+      			<label>Dni</label>
+      			<input type="text" id="dniBus" class="form-control form-control-sm" placeholder="Ingrese DNI" >
       		</div>
-      		<div class="col-md-6">
-      			<input type="text" id="nombreBus">
+      		<div class="col-md-9">
+      			<label>Nombres Y Apellidos</label>
+      			<input type="text" id="nombreBus" class="form-control form-control-sm" placeholder="Ingrese Nombres o Apellidos para buscar">
       		</div>
       	</div>
     	<div class="row">
