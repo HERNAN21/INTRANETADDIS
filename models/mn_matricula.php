@@ -28,11 +28,25 @@ class Model_Matricula{
         $result->close();
 	}
 
+	public function validar($id_carrera,$id_ciclo, $id_semestre,$id_persona){
+		$query  = " select * from matricula as mat ";
+		$query .= " inner join evaluacionpostulante as eva on mat.id_evaluacionpost=eva.id_evaluacionpost ";
+		$query .= " inner join persona as per on eva.id_persona=per.id_persona ";
+		$query .= " where mat.id_carrera=? and mat.id_ciclo=? and mat.id_semestre=? and per.id_persona=? ";
+		$result = Conexion::conectaDB()->prepare($query);
+		$result->bindParam(1, $id_carrera, PDO::PARAM_INT);
+		$result->bindParam(2, $id_ciclo, PDO::PARAM_INT);
+		$result->bindParam(3, $id_semestre, PDO::PARAM_INT);
+		$result->bindParam(4, $id_persona, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+        $result->close();
+	}
 
 	public function insert($cod_matricula,$idEvaluacion,$carrera,$ciclo,$semestre,$cod_pago,$tipomat,$cod_user,$id_talalumno){
 		$query  = ' insert into matricula (cod_unicoMatricula, id_evaluacionPost, id_carrera, id_ciclo, id_semestre, ';
-		$query .= ' cod_pago, fecha_registro, cod_usuario, id_talumno) ';
-		$query .= ' values(?, ?, ?, ?, ?, ?, now(), ?, ?) ';
+		$query .= ' cod_pago, fecha_registro, cod_usuario, id_talumno,tipo_matricula) ';
+		$query .= ' values(?, ?, ?, ?, ?, ?, now(), ?, ?,?) ';
 		$result = Conexion::conectaDB()->prepare($query);
 		$result->bindParam(1, $cod_matricula, PDO::PARAM_STR);
 		$result->bindParam(2, $idEvaluacion, PDO::PARAM_INT);
@@ -42,6 +56,7 @@ class Model_Matricula{
 		$result->bindParam(6, $cod_pago, PDO::PARAM_STR);
 		$result->bindParam(7, $cod_user, PDO::PARAM_INT);
 		$result->bindParam(8, $id_talalumno, PDO::PARAM_INT);
+		$result->bindParam(9, $tipomat, PDO::PARAM_INT);
 		if ($result->execute()){
 			return "success";
 		}else{
@@ -51,12 +66,35 @@ class Model_Matricula{
 		$result->close();
 	}	
 
-	public function update(){
-		
+	public function update($cod_unicoMatricula, $id_carrera, $id_ciclo, $id_semestre, $cod_pago,$tipomat, $id_mat){
+		$query  = " update matricula set cod_unicoMatricula=?, id_carrera=?, id_ciclo=?, id_semestre=?, cod_pago=?,fecha_registro=now(),tipo_matricula=?  ";
+		$query .= " where id_matricula=? ";
+		$result = Conexion::conectaDB()->prepare($query);
+		$result->bindParam(1, $cod_unicoMatricula, PDO::PARAM_INT);
+		$result->bindParam(2, $id_carrera, PDO::PARAM_INT);
+		$result->bindParam(3, $id_ciclo, PDO::PARAM_INT);
+		$result->bindParam(4, $id_semestre, PDO::PARAM_INT);
+		$result->bindParam(5, $cod_pago, PDO::PARAM_INT);
+		$result->bindParam(6, $tipomat, PDO::PARAM_INT);
+		$result->bindParam(7, $id_mat, PDO::PARAM_INT);
+		if ($result->execute()){
+			return "success";
+		}else{
+			return $result->errorInfo();
+		}
+		$result->close();
 	}
 
-	public function delete(){
-		
+	public function delete($id_mat){
+		$query=" delete from matricula where id_matricula=? ";
+		$result = Conexion::conectaDB()->prepare($query);
+		$result->bindParam(1, $id_mat, PDO::PARAM_INT);
+		if ($result->execute()){
+			return "success";
+		}else{
+			return $result->errorInfo();
+		}
+		$result->close();
 	}
 
 	public function getOneData(){

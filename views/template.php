@@ -15,7 +15,6 @@
 
     <!-- Bootstrap Core Css -->
     <link href="views/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-    
 
     <link rel="stylesheet" href="views/plugins/alertify/css/alertify.css">
 
@@ -26,7 +25,7 @@
     <link href="views/plugins/animate-css/animate.css" rel="stylesheet" />
 
     <!-- Bootstrap Select Css (Para usar los select) -->
-    <link href="views/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!--<link href="views/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />-->
 
     <!-- JQuery DataTable Css -->
     <link href="views/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
@@ -65,7 +64,7 @@
 
     <!-- Jquery Core Js -->
     <script src="views/plugins/jquery/jquery.min.js"></script>
-    
+    <script src="views/js/pages/charts/Chart.bundle.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 
     <script type="text/javascript" src="views/plugins/alertify/alertify.js"></script>
@@ -86,7 +85,7 @@
     <script src="views/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
      <!-- Select Plugin Js -->
-    <script src="views/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!--<script src="views/plugins/bootstrap-select/js/bootstrap-select.js"></script>-->
     
     <!-- Waves Effect Plugin Js -->
     <script src="views/plugins/node-waves/waves.js"></script>
@@ -134,7 +133,8 @@
     <script src="views/js/gestorAsistencia.js"></script>
     <script src="views/js/gestorMiPerfil.js"></script>
     <script src="views/js/ma_perfilAlumno.js"></script>
-    <script src="views/js/myRecordNotas.js"></script>
+    <script src="views/js/mn_recordNotas.js"></script>
+    <script src="views/js/ma_perfilAlumno.js"></script>
     <script src="views/js/reporteMatricula.js"></script>
 
 </body>

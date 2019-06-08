@@ -95,6 +95,7 @@
 											<div class="col-md-3">
 												<input type="hidden" name="idEvaluacion" id="idEvaluacion">
 												<input type="hidden" name="id_persona" id="id_persona">
+												<input type="hidden" name="id_mat" id="id_mat">
 												<label>Cod Pago:</label>
 												<input type="text" class="form-control-sm form-control" id="cod_pago" name="cod_pago">
 											</div>
@@ -107,7 +108,6 @@
 											<div class="col-md-3">
 												<label>Ciclo:</label>
 												<select name="ciclo" id="ciclo" class="form-control form-control-sm">
-													
 												</select>
 											</div>
 										</div>
@@ -119,9 +119,7 @@
 											</div>
 											<div class="col-md-5">
 												<label>Tipo Matricula:</label>
-												<select name="tipomat" id="tipomat" class="form-control form-control-sm">
-													<option value="0">Matricula Inicial</option>
-													<option value="0">Renovacion Matricula</option>
+												<select name="tipomats" id="tipomats" class="form-control form-control-sm">
 												</select>
 											</div>
 										</div>
@@ -129,7 +127,12 @@
 										<div class="row">
 											<div class="col-md-12">
 												<button class="btn btn-success" id="btnSave">Guardar</button>
-												<button class="btn btn-info">Actualizar</button>
+												<button class="btn btn-info" id="btnUpdate">Actualizar</button>
+												
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12" id="msgerror">
 												
 											</div>
 										</div>

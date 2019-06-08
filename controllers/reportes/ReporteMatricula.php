@@ -5,15 +5,25 @@ require_once "../../models/ms_gestorMatriculaRpt.php";
 require 'pdf.php';
 class Reporte{
 	public function verPdf($action){
-		$result =GestorMatriculaRpt::getRptMatricular($carrera=1, $ciclo=1, $semestre=1);
-
+		$carrera=$_GET['carrera']; 
+		$ciclo=$_GET['ciclo'];
+		$semestre=$_GET['semestre'];
+		$seccion=$_GET['seccion'];
+		$result =GestorMatriculaRpt::getRptMatricular($carrera, $ciclo, $semestre,$seccion);
 		$cicloarray = array(1=> "I",2=>"II",3=>"III",4=>"IV",5=>"V",6=>"VI" );
 		$ciclorom='';
-		/*foreach ($cicloarray as $key => $lis) {
+		foreach ($cicloarray as $key => $lis) {
 			if ($ciclo==$key) {
 				$ciclorom=$lis;	
 			}
-		}*/
+		}
+		$espe='';
+		$seccion='';
+		foreach ($result as $lis) {
+			$espe=$lis['deslar'];
+			$seccion=$lis['descripcion'];
+		}
+		$total=count($result);
 		
 		$pdf = new FPDF();
 		// $pdf->AddPage('P','A4');
@@ -44,22 +54,21 @@ class Reporte{
         $pdf->SetFont('Arial','B',10);
         $pdf->Cell(30,5,'ESPECIALIDAD:',0,0,'L');
         $pdf->SetFont('Arial','',9);
-        $pdf->Cell(100,5,'ADMININISTRACION DE EMPRESA','B',0,'L');
+        $pdf->Cell(100,5,utf8_decode($espe),'B',0,'L');
         
         $pdf->Cell(5);
         $pdf->Cell(12,5,'CICLO:',0,0,'L');
         $pdf->SetFont('Arial','',9);
-        $pdf->Cell(10,5,'I','B',0,'C');
+        $pdf->Cell(10,5,$ciclorom,'B',0,'C');
         $pdf->Cell(5);
 
         $pdf->Cell(20,5,utf8_decode('SECCIÓN:'),0,0,'C');
         $pdf->SetFont('Arial','',9);
-        $pdf->Cell(20,5,'A','B',0,'C');
+        $pdf->Cell(20,5,utf8_decode($seccion),'B',0,'C');
         $pdf->Cell(5);
         $pdf->Cell(33,5,utf8_decode('TOTAL DE ALUMNOS:'),0,0,'L');
         $pdf->SetFont('Arial','',9);
-        $pdf->Cell(20,5,'150','B',0,'C');
-
+        $pdf->Cell(20,5,$total,'B',0,'C');
 
         $pdf->Ln(10);
         $pdf->SetFont('Arial','B',9);
