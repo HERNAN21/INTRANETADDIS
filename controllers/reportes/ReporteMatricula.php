@@ -29,7 +29,7 @@ class Reporte{
 		// $pdf->AddPage('P','A4');
 		$pdf->AddPage('L','A4');
 		
-        $pdf->SetTitle("Boleta De Notas");
+        $pdf->SetTitle("Reporte Consolidado de Matricula");
 		$pdf->SetLeftMargin(10);
 		$pdf->SetRightMargin(10);
 		$pdf->SetFillColor(37, 158, 241);
@@ -97,7 +97,7 @@ class Reporte{
         if ($action=='verPdfMatricula') {
         	$pdf->Output();
         }else if ($action='descargar') {
-			$pdf->Output('D','boleta notas.pdf');
+			$pdf->Output('D','Reporte Consolidado de Matricula.pdf');
         }
 	}
 
