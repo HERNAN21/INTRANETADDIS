@@ -136,6 +136,7 @@
     <script src="views/js/mn_recordNotas.js"></script>
     <script src="views/js/ma_perfilAlumno.js"></script>
     <script src="views/js/reporteMatricula.js"></script>
+    <script src="views/js/persona.js"></script>
 
 </body>
 
